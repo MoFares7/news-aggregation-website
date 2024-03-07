@@ -3,11 +3,11 @@ import { Box } from '@mui/material';
 import colors from '../../../assets/theme/base/colors';
 import borders from '../../../assets/theme/base/borders';
 import Appbar from '../../../components/Appbar/appar';
-import avatar from '../../../assets/images/lamp.svg';
+import avatar from '../../../assets/images/education.svg';
 import HeadPages from '../../../components/HeadLine/head_pages';
-import SpecializedCardNews from './../../../components/Cards/specialized_card_news';
+import SpecializedCardNews from '../../../components/Cards/specialized_card_news';
 
-const ElectronicNewsPages = () => {
+const EducationsPage = () => {
         const tecNews = [
                 {
                         image: "https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg",
@@ -38,7 +38,7 @@ const ElectronicNewsPages = () => {
                                         justifyContent: 'center'
                                 }}>
                                         <HeadPages
-                                                title={"Technology"}
+                                                title={"Education"}
                                                 images={avatar}
                                         />
 
@@ -67,7 +67,6 @@ const ElectronicNewsPages = () => {
                                                         }}
                                                 >
                                                         {tecNews.map((tec, index) => (
-
                                                                 <SpecializedCardNews
                                                                         key={index}
                                                                         image={tec.image}
@@ -83,10 +82,9 @@ const ElectronicNewsPages = () => {
                                 </Box>
                                 <Box sx={{ p: 3 }} />
                         </>
-                } />
-
-
+                }
+                />
         );
 };
 
-export default ElectronicNewsPages;
+export default EducationsPage;

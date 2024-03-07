@@ -1,10 +1,25 @@
 import React from 'react';
-import {Box, AppBar, Toolbar, Typography, IconButton, Drawer, List, ListItem, ListItemText, useMediaQuery } from '@mui/material';
+import {
+        Box,
+        AppBar,
+        Toolbar,
+        Typography,
+        IconButton,
+        Drawer,
+        List,
+        ListItem,
+        ListItemText,
+        useMediaQuery,
+        InputBase,
+        alpha,
+} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import SearchIcon from '@mui/icons-material/Search';
 import { Link, useLocation } from 'react-router-dom';
 import colors from '../../assets/theme/base/colors';
 import MDTypography from '../../items/MDTypography';
 import typography from './../../assets/theme/base/typography';
+import borders from '../../assets/theme/base/borders';
 
 const Navbar = () => {
         const [drawerOpen, setDrawerOpen] = React.useState(false);
@@ -37,11 +52,26 @@ const Navbar = () => {
                                                         <Typography variant="h6" sx={{ flexGrow: 1 }}>
                                                                 Test News
                                                         </Typography>
+                                                        {/* Search input field */}
+                                                        <Box sx={{ m: 1, flexGrow: 1, position: 'relative', backgroundColor: colors.secondary.main, borderRadius: borders.borderRadius.lg }}>
+                                                                <IconButton sx={{ right: 1, color: colors.white.main }}>
+                                                                        <SearchIcon />
+                                                                </IconButton>
+                                                                <InputBase
+                                                                        placeholder="Search"
+                                                                        sx={{
+                                                                                color: 'inherit',
+                                                                                '&::placeholder': {
+                                                                                        color: alpha('#fff', 0.7),
+                                                                                },
+                                                                        }}
+                                                                />
+                                                        </Box>
                                                         <Box
                                                                 sx={{
                                                                         borderBottom: location.pathname === '/' ? '2px solid blue' : 'none',
-                                                                        marginRight: '16px', // Adjust this value based on your design
-                                                                        paddingBottom: '2px', // Adjust this value based on your design
+                                                                        marginRight: '16px',
+                                                                        paddingBottom: '2px',
                                                                 }}
                                                         >
                                                                 <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
@@ -51,15 +81,26 @@ const Navbar = () => {
                                                         <Box
                                                                 sx={{
                                                                         borderBottom: location.pathname === '/elec-news' ? '2px solid blue' : 'none',
-                                                                        marginRight: '16px', // Adjust this value based on your design
-                                                                        paddingBottom: '2px', // Adjust this value based on your design
+                                                                        marginRight: '16px',
+                                                                        paddingBottom: '2px',
                                                                 }}
                                                         >
                                                                 <Link to="/elec-news" style={{ textDecoration: 'none', color: 'inherit' }}>
-                                                                        <MDTypography typography={typography.body2}>Technology News</MDTypography>
+                                                                        <MDTypography typography={typography.body2}>Technology</MDTypography>
                                                                 </Link>
                                                         </Box>
-                                                        {/* Add more links as needed */}
+                                                        <Box
+                                                                sx={{
+                                                                        borderBottom: location.pathname === '/edu-news' ? '2px solid blue' : 'none',
+                                                                        marginRight: '16px',
+                                                                        paddingBottom: '2px',
+                                                                }}
+                                                        >
+                                                                <Link to="/edu-news" style={{ textDecoration: 'none', color: 'inherit' }}>
+                                                                        <MDTypography typography={typography.body2}>Education</MDTypography>
+                                                                </Link>
+                                                        </Box>
+
                                                 </>
                                         )}
                                 </Toolbar>
@@ -72,9 +113,20 @@ const Navbar = () => {
                                                         <ListItemText primary="Home" />
                                                 </ListItem>
                                                 <ListItem button component={Link} to="/elec-news" selected={location.pathname === '/elec-news'}>
-                                                        <ListItemText primary="Technology News" />
+                                                        <ListItemText primary="Technology " />
                                                 </ListItem>
-                                                {/* Add more links as needed */}
+                                                <Box
+                                                        sx={{
+                                                                borderBottom: location.pathname === '/edu-news' ? '2px solid blue' : 'none',
+                                                                marginRight: '16px',
+                                                                paddingBottom: '2px',
+                                                        }}
+                                                >
+                                                        <Link to="/edu-news" style={{ textDecoration: 'none', color: 'inherit' }}>
+                                                                <MDTypography typography={typography.body2}>Education</MDTypography>
+                                                        </Link>
+                                                </Box>
+
                                         </List>
                                 </Drawer>
                         )}

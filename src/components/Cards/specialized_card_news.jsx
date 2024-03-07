@@ -1,9 +1,9 @@
 import React from 'react';
 import { Box, CardMedia, Divider } from '@mui/material';
-import colors from '../../../assets/theme/base/colors';
-import borders from '../../../assets/theme/base/borders';
-import MDTypography from '../../../items/MDTypography';
-import typography from './../../../assets/theme/base/typography';
+import colors from '../../assets/theme/base/colors';
+import borders from '../../assets/theme/base/borders';
+import MDTypography from '../../items/MDTypography';
+import typography from '../../assets/theme/base/typography';
 
 const SpecializedCardNews = ({ image, title, description, content, createdAt }) => {
         return (
