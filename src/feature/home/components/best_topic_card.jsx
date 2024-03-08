@@ -16,7 +16,7 @@ const BestTopicCard = () => {
                                 borderRadius: borders.borderRadius.lg,
                                 backgroundColor: colors.primary.main,
                                 color: colors.white.main,
-                                ml: 10,
+                                
                                 boxSizing: 'border-box',
                         }}
                 >

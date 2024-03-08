@@ -49,8 +49,8 @@ const ElectronicNewsPages = () => {
                                                 <Box
                                                         sx={{
                                                                 maxWidth: {
-                                                                        xs: 300,
-                                                                        sm: 300,
+                                                                        xs: 320,
+                                                                        sm: 576,
                                                                         md: 600,
                                                                         lg: 992,
                                                                         xl: 1280,

@@ -9,7 +9,14 @@ const SpecializedCardNews = ({ image, title, description, content, createdAt }) 
         return (
                 <Box>
                         <Box sx={{ display: 'flex' }}>
-                                <Box sx={{ width: '30%', justifyContent: 'center' }}>
+                                <Box sx={{
+                                        width: {
+                                                xs: '50%',
+                                                sm: '50%',
+                                                md: '40%',
+                                                xl: '40%',
+                                        }, justifyContent: 'center'
+                                }}>
                                         <CardMedia
                                                 component="img"
                                                 height="194"
@@ -18,6 +25,7 @@ const SpecializedCardNews = ({ image, title, description, content, createdAt }) 
                                                 sx={{ borderRadius: borders.borderRadius.lg }}
                                         />
                                         <MDTypography typography={typography.h5}>{title}</MDTypography>
+                                        <Box sx={{ p: 1 }} />
                                         <MDTypography typography={typography.caption}>
                                                 {createdAt}
                                         </MDTypography>
@@ -28,7 +36,14 @@ const SpecializedCardNews = ({ image, title, description, content, createdAt }) 
                                         flexItem
                                         color={colors.white.main}
                                 />
-                                <Box sx={{ width: '70%' }}>
+                                <Box sx={{
+                                        width: {
+                                                xs: '50%',
+                                                sm: '50%',
+                                                md: '60%',
+                                                xl: '60%',
+                                        },
+                                }}>
                                         <MDTypography typography={typography.h5}>Description</MDTypography>
                                         <Box sx={{ p: 0.5 }} />
                                         <MDTypography typography={typography.body2}>
@@ -41,13 +56,10 @@ const SpecializedCardNews = ({ image, title, description, content, createdAt }) 
                                                 {content}
                                         </MDTypography>
                                 </Box>
-
                         </Box>
                         <Divider color={colors.grey[400]} sx={{ mt: 5, mb: 5 }} />
-
                 </Box>
-
-        )
+        );
 }
 
 export default SpecializedCardNews

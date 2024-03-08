@@ -20,6 +20,7 @@ import colors from '../../assets/theme/base/colors';
 import MDTypography from '../../items/MDTypography';
 import typography from './../../assets/theme/base/typography';
 import borders from '../../assets/theme/base/borders';
+import SearchBar from '../../items/MDInput/search_bar';
 
 const Navbar = () => {
         const [drawerOpen, setDrawerOpen] = React.useState(false);
@@ -49,24 +50,12 @@ const Navbar = () => {
                                                 </IconButton>
                                         ) : (
                                                 <>
-                                                        <Typography variant="h6" sx={{ flexGrow: 1 }}>
-                                                                Test News
+                                                        <Typography typography={typography.d5} sx={{ flexGrow: 1 }}>
+                                                                New Aggregation Website
                                                         </Typography>
                                                         {/* Search input field */}
-                                                        <Box sx={{ m: 1, flexGrow: 1, position: 'relative', backgroundColor: colors.secondary.main, borderRadius: borders.borderRadius.lg }}>
-                                                                <IconButton sx={{ right: 1, color: colors.white.main }}>
-                                                                        <SearchIcon />
-                                                                </IconButton>
-                                                                <InputBase
-                                                                        placeholder="Search"
-                                                                        sx={{
-                                                                                color: 'inherit',
-                                                                                '&::placeholder': {
-                                                                                        color: alpha('#fff', 0.7),
-                                                                                },
-                                                                        }}
-                                                                />
-                                                        </Box>
+                                                        <SearchBar />
+
                                                         <Box
                                                                 sx={{
                                                                         borderBottom: location.pathname === '/' ? '2px solid blue' : 'none',
@@ -107,7 +96,7 @@ const Navbar = () => {
                         </AppBar>
 
                         {isMobile && (
-                                <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
+                                <Drawer sx={{ backgroundColor: colors.primary.main }} anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
                                         <List>
                                                 <ListItem button component={Link} to="/" selected={location.pathname === '/'}>
                                                         <ListItemText primary="Home" />
@@ -115,17 +104,10 @@ const Navbar = () => {
                                                 <ListItem button component={Link} to="/elec-news" selected={location.pathname === '/elec-news'}>
                                                         <ListItemText primary="Technology " />
                                                 </ListItem>
-                                                <Box
-                                                        sx={{
-                                                                borderBottom: location.pathname === '/edu-news' ? '2px solid blue' : 'none',
-                                                                marginRight: '16px',
-                                                                paddingBottom: '2px',
-                                                        }}
-                                                >
-                                                        <Link to="/edu-news" style={{ textDecoration: 'none', color: 'inherit' }}>
-                                                                <MDTypography typography={typography.body2}>Education</MDTypography>
-                                                        </Link>
-                                                </Box>
+                                                <ListItem button component={Link} to='/edu-news' selected={location.pathname === '/edu-news'}>
+                                                        <ListItemText primary="Education " />
+                                                </ListItem>
+                                              
 
                                         </List>
                                 </Drawer>
