@@ -2,7 +2,6 @@ export const fetchGetTechCrunch = () => ({ type: 'FETCH_GET_TECH_CRUNCH_REQUEST'
 export const fetchGetTechCrunchSuccess = (data) => ({ type: 'FETCH_GET_TECH_CRUNCH_SUCCESS', payload: data });
 export const fetchGetTechCrunchFailure = (error) => ({ type: 'FETCH_GET_TECH_CRUNCH_FAILURE', payload: error });
 
-// // techCrunchReducer.js
 const initialState = {
         articles: null,
         loading: false,

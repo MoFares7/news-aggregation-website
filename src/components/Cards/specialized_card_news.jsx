@@ -4,6 +4,7 @@ import colors from '../../assets/theme/base/colors';
 import borders from '../../assets/theme/base/borders';
 import MDTypography from '../../items/MDTypography';
 import typography from '../../assets/theme/base/typography';
+import { Link } from 'react-router-dom';
 
 const SpecializedCardNews = ({ image, title, description, content, createdAt }) => {
         return (
@@ -19,7 +20,7 @@ const SpecializedCardNews = ({ image, title, description, content, createdAt }) 
                                 }}>
                                         <CardMedia
                                                 component="img"
-                                                height="194"
+                                                height="250"
                                                 image={image}
                                                 alt="new-img"
                                                 sx={{ borderRadius: borders.borderRadius.lg }}
@@ -53,7 +54,7 @@ const SpecializedCardNews = ({ image, title, description, content, createdAt }) 
                                         <MDTypography typography={typography.h5}>Content</MDTypography>
                                         <Box sx={{ p: 0.5 }} />
                                         <MDTypography typography={typography.body2}>
-                                                {content}
+                                                <Link to ={content}> {content} </Link>
                                         </MDTypography>
                                 </Box>
                         </Box>

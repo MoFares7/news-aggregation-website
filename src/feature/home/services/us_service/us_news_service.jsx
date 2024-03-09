@@ -1,4 +1,3 @@
-// sagas.js
 import { takeLatest, put, call } from 'redux-saga/effects';
 import { fetchDataSuccess, fetchDataFailure } from './us_news_slice';
 import axios from 'axios';
@@ -12,7 +11,6 @@ export const fetchDataFromApi = async () => {
         }
 };
 
-// sagas.js
 function* fetchDataSaga() {
         try {
                 const { success, data, error } = yield call(fetchDataFromApi);

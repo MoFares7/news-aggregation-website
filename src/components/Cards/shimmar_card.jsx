@@ -2,9 +2,9 @@ import React from 'react';
 import { Card, CardMedia, CardHeader, CardContent, CardActions, Collapse, Avatar, Typography, Skeleton } from '@mui/material';
 import colors from '../../assets/theme/base/colors';
 
-const ShimmerCard = () => {
+const ShimmerCard = ({ width }) => {
         return (
-                <Card sx={{ width: '400px', backgroundColor: colors.secondary.main }}>
+                <Card sx={{ width: { width }, backgroundColor: colors.secondary.main }}>
                         <Skeleton variant="rectangular" height={150} />
                         <CardHeader
                                 avatar={

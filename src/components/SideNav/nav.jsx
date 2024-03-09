@@ -14,12 +14,10 @@ import {
         alpha,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import SearchIcon from '@mui/icons-material/Search';
 import { Link, useLocation } from 'react-router-dom';
 import colors from '../../assets/theme/base/colors';
 import MDTypography from '../../items/MDTypography';
 import typography from './../../assets/theme/base/typography';
-import borders from '../../assets/theme/base/borders';
 import SearchBar from '../../items/MDInput/search_bar';
 
 const Navbar = () => {
