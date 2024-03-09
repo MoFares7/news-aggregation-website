@@ -10,15 +10,12 @@ import {
         ListItem,
         ListItemText,
         useMediaQuery,
-        InputBase,
-        alpha,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link, useLocation } from 'react-router-dom';
 import colors from '../../assets/theme/base/colors';
 import MDTypography from '../../items/MDTypography';
 import typography from './../../assets/theme/base/typography';
-import SearchBar from '../../items/MDInput/search_bar';
 
 const Navbar = () => {
         const [drawerOpen, setDrawerOpen] = React.useState(false);
@@ -51,9 +48,7 @@ const Navbar = () => {
                                                         <Typography typography={typography.d5} sx={{ flexGrow: 1 }}>
                                                                 New Aggregation Website
                                                         </Typography>
-                                                        {/* Search input field */}
-                                                        <SearchBar />
-
+                                                       
                                                         <Box
                                                                 sx={{
                                                                         borderBottom: location.pathname === '/' ? '2px solid blue' : 'none',

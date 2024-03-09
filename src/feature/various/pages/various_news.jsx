@@ -1,6 +1,4 @@
-// VariousNewPage.js
-
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box } from '@mui/material';
 import colors from '../../../assets/theme/base/colors';
 import borders from '../../../assets/theme/base/borders';
@@ -13,10 +11,12 @@ import { fetchVariousNews } from '../services/various_news_slice';
 import ShimmerCard from '../../../components/Cards/shimmar_card';
 import CardError from '../../../components/Cards/error_card';
 import image_new from './../../../assets/images/news.jpg';
-import SearchComponent from '../../education/components/s';
+import FilterSection from '../../education/components/filter_section';
 
 const VariousNewPage = () => {
         const dispatch = useDispatch();
+        const [filteredResults, setFilteredResults] = useState([]);
+        const [initialLoad, setInitialLoad] = useState(true);
 
         useEffect(() => {
                 dispatch(fetchVariousNews());
@@ -25,12 +25,31 @@ const VariousNewPage = () => {
         const variousNews = useSelector((state) => state.variousNews);
         const { results, loading, error } = variousNews;
 
-        console.log('Results:', results);
+        useEffect(() => {
+                setFilteredResults(results);
+        }, [results]);
+
+        const handleSearch = ({ searchTerm, nameFilter, dateFilter }) => {
+                const filteredResults = results.filter((tec) => {
+                        return (
+                                tec.webTitle.toLowerCase().includes(searchTerm.toLowerCase()) &&
+                                tec.pillarName.includes(nameFilter) &&
+                                tec.webPublicationDate.includes(dateFilter)
+                        );
+                });
+
+                setFilteredResults(filteredResults);
+                setInitialLoad(false);
+        };
+        const handleRefreshVarious = () => {
+                dispatch(fetchVariousNews());
+                setInitialLoad(true);
+        };
 
         return (
                 <Box sx={{ justifyContent: 'center' }}>
-                        <SearchComponent  />
-                <Appbar
+                        <FilterSection onSearch={handleSearch} onRefresh={handleRefreshVarious} />
+                        <Appbar
                                 children={
                                         <>
                                                 <Box sx={{ justifyContent: 'center' }}>
@@ -72,11 +91,8 @@ const VariousNewPage = () => {
                                                                                 >
                                                                                         <ShimmerCard width={'800px'} />
                                                                                 </Box>
-                                                                        ) : error ? (
-                                                                                <CardError errorMessage="Failed to fetch news. Please try again later." />
-                                                                        ) : (
-                                                                                results &&
-                                                                                results.map((tec, index) => (
+                                                                        ) : (filteredResults && filteredResults.length > 0) || initialLoad ? (
+                                                                                (filteredResults ? filteredResults : results)?.map((tec, index) => (
                                                                                         <SpecializedCardNews
                                                                                                 key={index}
                                                                                                 image={image_new}
@@ -86,6 +102,16 @@ const VariousNewPage = () => {
                                                                                                 content={tec.apiUrl}
                                                                                         />
                                                                                 ))
+                                                                        ) : (
+                                                                                <Box
+                                                                                        sx={{
+                                                                                                textAlign: 'center',
+                                                                                                padding: '20px',
+                                                                                                color: colors.white.main,
+                                                                                        }}
+                                                                                >
+                                                                                        No results found for the specified name and date.
+                                                                                </Box>
                                                                         )}
                                                                 </Box>
                                                         </Box>
