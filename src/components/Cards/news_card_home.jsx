@@ -12,6 +12,7 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import borders from '../../assets/theme/base/borders';
 import colors from '../../assets/theme/base/colors';
+import typography from '../../assets/theme/base/typography';
 
 const ExpandMore = styled((props) => {
         const { expand, ...other } = props;
@@ -42,6 +43,8 @@ export default function NewsCards({ avatar, image, author, title, createdAt, des
                                         xl: 600,
                                         xxl: 520,
                                 },
+                                height: expanded ? 'auto' : 550,
+
                                 display: "flex",
                                 flexDirection: "column",
                                 boxShadow: "none",
@@ -53,7 +56,17 @@ export default function NewsCards({ avatar, image, author, title, createdAt, des
                                 boxSizing: 'border-box',
                         }}
                 >
-                        <CardMedia component="img" height="194" image={image} alt="new-img" sx={{ borderRadius: borders.borderRadius.lg }} />
+                        <CardMedia
+                                component="img"
+                                height="150"
+                                image={image}
+                                alt="new-img"
+                                sx={{
+                                        borderRadius: [0, 0, 0, borders.borderRadius.lg],
+                                        overflow: 'hidden',
+                                }}
+                        />
+
                         <CardHeader
                                 avatar={
                                         <Avatar sx={{ bgcolor: "transparent" }} aria-label="recipe">
@@ -61,7 +74,7 @@ export default function NewsCards({ avatar, image, author, title, createdAt, des
                                         </Avatar>
                                 }
                                 title={
-                                        <Typography variant="h6" color="white">
+                                        <Typography typography={typography.title}>
                                                 {title}
                                         </Typography>
                                 }
@@ -73,7 +86,7 @@ export default function NewsCards({ avatar, image, author, title, createdAt, des
                         />
 
                         <CardContent>
-                                <Typography variant="body2" color="white" >
+                                <Typography typography={typography.body2} >
                                         {description}
                                 </Typography>
                         </CardContent>

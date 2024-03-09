@@ -19,7 +19,7 @@ function* fetchDataSaga() {
 
                 if (success) {
                         console.log('API request successful:', data);
-                        yield put(fetchDataSuccess(data.data.articles)); // adjust this line
+                        yield put(fetchDataSuccess(data.data.articles)); 
                 } else {
                         console.error('API request failed:', error);
                         yield put(fetchDataFailure(error));

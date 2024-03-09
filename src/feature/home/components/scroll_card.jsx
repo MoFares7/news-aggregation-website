@@ -88,7 +88,7 @@ const ScrollCard = ({ newsData }) => {
                                                         key={index}
                                                 >
                                                         <NewsCards
-                                                                avatar={article.source.name}
+                                                                avatar={article.urlToImage}
                                                                 author={article.author}
                                                                 image={article.urlToImage}
                                                                 title={article.title}
