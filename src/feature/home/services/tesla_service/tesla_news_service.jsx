@@ -4,7 +4,7 @@ import axios from 'axios';
 
 export const getTeslaNewsService = async () => {
         try {
-                const response = await axios.get('https://newsapi.org/v2/everything?q=tesla&from=2024-02-09&sortBy=publishedAt&apiKey=90fabd1dc97a4bf495863bc407b260e5');
+                const response = await axios.get('https://newsapi.org/v2/everything?q=tesla&from=2024-02-10&sortBy=publishedAt&apiKey=90fabd1dc97a4bf495863bc407b260e5');
                 return { success: true, data: response };
         } catch (error) {
                 return { success: false, error };

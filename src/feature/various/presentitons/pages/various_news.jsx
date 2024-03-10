@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { Box } from '@mui/material';
-import colors from '../../../assets/theme/base/colors';
-import borders from '../../../assets/theme/base/borders';
-import Appbar from '../../../components/Appbar/appar';
-import avatar from '../../../assets/images/lamp.svg';
-import HeadPages from '../../../components/HeadLine/head_pages';
-import SpecializedCardNews from '../../../components/Cards/specialized_card_news';
+import colors from '../../../../assets/theme/base/colors';
+import borders from '../../../../assets/theme/base/borders';
+import Appbar from '../../../../components/Appbar/appar';
+import avatar from '../../../../assets/images/lamp.svg';
+import HeadPages from '../../../../components/HeadLine/head_pages';
+import SpecializedCardNews from '../../../../components/Cards/specialized_card_news';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchVariousNews } from '../services/various_news_slice';
-import ShimmerCard from '../../../components/Cards/shimmar_card';
-import CardError from '../../../components/Cards/error_card';
-import image_new from './../../../assets/images/news.jpg';
-import FilterSection from '../../education/components/filter_section';
+import { fetchVariousNews } from '../../services/various_news_slice';
+import ShimmerCard from '../../../../components/Cards/shimmar_card';
+import image_new from './../../../../assets/images/news.jpg';
+import FilterSection from '../../../education/presentitons/components/filter_section';
+import EmptyCard from '../../../../components/Cards/empty_card';
 
 const VariousNewPage = () => {
         const dispatch = useDispatch();
@@ -32,8 +32,8 @@ const VariousNewPage = () => {
         const handleSearch = ({ searchTerm, nameFilter, dateFilter }) => {
                 const filteredResults = results.filter((tec) => {
                         return (
-                                tec.webTitle.toLowerCase().includes(searchTerm.toLowerCase()) &&
-                                tec.pillarName.includes(nameFilter) &&
+                                tec.pillarName.toLowerCase().includes(searchTerm.toLowerCase()) &&
+                                tec.webTitle.includes(nameFilter) &&
                                 tec.webPublicationDate.includes(dateFilter)
                         );
                 });
@@ -53,7 +53,7 @@ const VariousNewPage = () => {
                                 children={
                                         <>
                                                 <Box sx={{ justifyContent: 'center' }}>
-                                                        <HeadPages title={'Technology'} images={avatar} />
+                                                        <HeadPages title={'Various'} images={avatar} />
                                                         <Box
                                                                 sx={{
                                                                         display: 'flex',
@@ -110,7 +110,9 @@ const VariousNewPage = () => {
                                                                                                 color: colors.white.main,
                                                                                         }}
                                                                                 >
-                                                                                        No results found for the specified name and date.
+                                                                                        <EmptyCard
+                                                                                                message="not founded any result"
+                                                                                        />
                                                                                 </Box>
                                                                         )}
                                                                 </Box>

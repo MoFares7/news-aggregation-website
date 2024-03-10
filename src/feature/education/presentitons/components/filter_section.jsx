@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
 import { Box } from '@mui/material';
-import colors from '../../../assets/theme/base/colors';
-import typography from '../../../assets/theme/base/typography';
-import borders from '../../../assets/theme/base/borders';
-import MDButton from './../../../items/MDButton/index';
+import colors from '../../../../assets/theme/base/colors';
+import typography from '../../../../assets/theme/base/typography';
+import MDButton from '../../../../items/MDButton/index';
 
 const FilterSection = ({ onSearch, onRefresh }) => {
         const [searchTerm, setSearchTerm] = useState('');
@@ -25,11 +23,16 @@ const FilterSection = ({ onSearch, onRefresh }) => {
                         sx={{
                                 backgroundColor: colors.primary.main,
                                 justifyContent: 'center',
-                                display: 'flex',
+                                display: {
+                                        xs: 'block',
+                                        sm: 'flex',
+                                        xl: 'flex',
+                                },
                                 pt: 1,
                         }}
                 >
-                        <MDButton typography={typography.button.main}
+                        <Box>
+                            <MDButton typography={typography.button.main}
                                 sx={{
                                         color: colors.white.main,
                                         backgroundColor: colors.success.main,
@@ -39,7 +42,9 @@ const FilterSection = ({ onSearch, onRefresh }) => {
 
                                 }} onClick={handleRefresh}>
                                 Refresh
-                        </MDButton>
+                        </MDButton>    
+                        </Box>
+                        
                         <TextField
                                 label="Search "
                                 value={searchTerm}
@@ -52,7 +57,7 @@ const FilterSection = ({ onSearch, onRefresh }) => {
                                 InputProps={{
                                         style: {
                                                 color: colors.white.main,
-                                                borderBottom: `2px solid ${colors.white.main}`, // Set the color for the underline
+                                                borderBottom: `2px solid ${colors.white.main}`,
                                                 borderTop: 'none',
                                                 borderLeft: 'none',
                                                 borderRight: 'none',
@@ -82,7 +87,6 @@ const FilterSection = ({ onSearch, onRefresh }) => {
                         />
                         <TextField
                                 type="date"
-                                // label="Search by Date"
                                 value={dateFilter}
                                 onChange={(e) => setDateFilter(e.target.value)}
                                 InputLabelProps={{

@@ -3,7 +3,7 @@ import MDTypography from '../../items/MDTypography'
 import { Box } from '@mui/material'
 import typography from './../../assets/theme/base/typography';
 
-const HeadLineTitle = ({ title, color }) => {
+const HeadLineTitle = ({ title }) => {
         return (
                 <Box>
                         <MDTypography typography={typography.h4}>

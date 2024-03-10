@@ -9,14 +9,24 @@ import { Link } from 'react-router-dom';
 const SpecializedCardNews = ({ image, title, description, content, createdAt }) => {
         return (
                 <Box>
-                        <Box sx={{ display: 'flex' }}>
+                        <Box sx={{
+                                display: 'flex', transition: 'transform 0.4s ease',
+                                '&:hover': {
+                                        transform: 'scale(0.97)',
+                                },
+                        }}>
                                 <Box sx={{
                                         width: {
                                                 xs: '50%',
                                                 sm: '50%',
                                                 md: '40%',
                                                 xl: '40%',
-                                        }, justifyContent: 'center'
+                                        },
+                                        justifyContent: 'center',
+                                        transition: 'transform 0.4s ease',
+                                        '&:hover': {
+                                                transform: 'scale(0.97)',
+                                        },
                                 }}>
                                         <CardMedia
                                                 component="img"
@@ -53,9 +63,12 @@ const SpecializedCardNews = ({ image, title, description, content, createdAt }) 
                                         <Box sx={{ p: 2 }} />
                                         <MDTypography typography={typography.h5}>Content</MDTypography>
                                         <Box sx={{ p: 0.5 }} />
-                                        <MDTypography typography={typography.body2}>
-                                                <Link to ={content}> {content} </Link>
-                                        </MDTypography>
+                                        <Box sx={{ maxHeight: '150px', overflowY: 'auto' }}>
+                                                <MDTypography typography={typography.body2}>
+                                                        <Link to={content}> {content} </Link>
+                                                </MDTypography>
+                                        </Box>
+
                                 </Box>
                         </Box>
                         <Divider color={colors.grey[400]} sx={{ mt: 5, mb: 5 }} />

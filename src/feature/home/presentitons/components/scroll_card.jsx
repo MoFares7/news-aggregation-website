@@ -1,11 +1,9 @@
-// ScrollCard.js
 import React, { useState, useEffect, useRef } from 'react';
 import { Box, Button } from '@mui/material';
-import NewsCards from '../../../components/Cards/news_card_home';
+import NewsCards from '../../../../components/Cards/news_card';
 import { ArrowBackIosNewOutlined, ArrowForwardIosOutlined } from '@mui/icons-material';
-import { useDispatch } from 'react-redux';
 
-const ScrollCard = ({ newsData }) => {
+const ScrollSection = ({ newsData }) => {
         const scrollableRef = useRef(null);
         const [isScrollVisible, setIsScrollVisible] = useState(false);
 
@@ -106,4 +104,4 @@ const ScrollCard = ({ newsData }) => {
         );
 };
 
-export default ScrollCard;
+export default ScrollSection;

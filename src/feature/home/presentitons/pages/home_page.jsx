@@ -1,19 +1,18 @@
-// HomePage.js
 import React, { useEffect } from 'react';
 import { Box, Grid } from '@mui/material';
-import colors from '../../../assets/theme/base/colors';
-import HeadLineTitle from '../../../components/HeadLine/head_line_title';
-import ScrollCard from '../components/scroll_card';
+import colors from '../../../../assets/theme/base/colors';
+import HeadLineTitle from '../../../../components/HeadLine/head_line_title';
+import ScrollSection from '../../../home/presentitons/components/scroll_card';
 import BestTopicCard from '../components/best_topic_card';
-import Appbar from '../../../components/Appbar/appar';
-import world from '../../../assets/images/world.png';
+import Appbar from '../../../../components/Appbar/appar';
+import world from '../../../../assets/images/world.png';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchData } from '../services/us_service/us_news_slice';
-import ShimmerCard from '../../../components/Cards/shimmar_card';
-import { fetchGetTechCrunch } from '../services/techCrunch_service/tech_crunch_slice';
-import borders from '../../../assets/theme/base/borders';
-import { getTeslaNewsService } from '../services/tesla_service/tesla_news_service';
-import { fetchTeslaNews } from '../services/tesla_service/tesla_news_slice';
+import { fetchData } from '../../services/us_service/us_news_slice';
+import ShimmerCard from '../../../../components/Cards/shimmar_card';
+import { fetchGetTechCrunch } from '../../services/techCrunch_service/tech_crunch_slice';
+import borders from '../../../../assets/theme/base/borders';
+import { fetchTeslaNews } from '../../services/tesla_service/tesla_news_slice';
+import CardError from '../../../../components/Cards/error_card';
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -32,26 +31,6 @@ const HomePage = () => {
 
   const teslaNews = useSelector((state) => state.teslaNews);
   const { articles: teslaArticles, loading: teslaLoading, error: teslaError } = teslaNews;
-
-  // Check for error state
-  if (error) {
-    return (
-      <Box
-        sx={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          height: '100vh',
-        }}
-      >
-        <p>Error fetching data. Please try again later.</p>
-      </Box>
-    );
-  }
-
-  console.log('usNews:', usNews);
-  console.log('getTechCrunch:', getTechCrunch);
-  console.log('teslaNews:', teslaNews);
 
   return (
     <>
@@ -93,17 +72,27 @@ const HomePage = () => {
                   justifyContent: 'center',
                 }}
               >
+                <Box sx={{ p: 1 }} />
                 <ShimmerCard width={'400px'} />
+                <Box sx={{ p: 1 }} />
                 <ShimmerCard width={'400px'} />
+                <Box sx={{ p: 1 }} />
                 <ShimmerCard width={'400px'} />
               </Box>
+            ) : error ? (
+              <Box sx={{ justifyContent: 'center', width: '100%' }}>
+                <CardError
+                  errorMessage="ouccred error please try again"
+                />
+              </Box>
+
             ) : (
-              articles && <ScrollCard newsData={articles} />
+              articles && <ScrollSection newsData={articles} />
             )}
 
             <Box sx={{ pt: 5 }} />
 
-            <HeadLineTitle title={"Top headlines from Tesla"} color={colors.white.main} />
+            <HeadLineTitle title={"Best Topic about Tesla"} color={colors.white.main} />
             <Box
               sx={{
                 pt: 2,
@@ -152,6 +141,10 @@ const HomePage = () => {
                           <ShimmerCard width={'400px'} />
                         </Box>
                       ))
+                    ) : teslaError ? (
+                      <CardError
+                        errorMessage="ouccred error please try again"
+                      />
                     ) : (
                       teslaArticles && teslaArticles.map((article) => (
                         <BestTopicCard
@@ -183,11 +176,17 @@ const HomePage = () => {
                 }}
               >
                 <ShimmerCard width={'400px'} />
+                <Box sx={{ p: 1 }} />
                 <ShimmerCard width={'400px'} />
+                <Box sx={{ p: 1 }} />
                 <ShimmerCard width={'400px'} />
               </Box>
+            ) : techCrunchError ? (
+              <CardError
+                errorMessage="ouccred error please try again"
+              />
             ) : (
-              techCrunchArticles && <ScrollCard newsData={techCrunchArticles} />
+              techCrunchArticles && <ScrollSection newsData={techCrunchArticles} />
             )}
             <Box sx={{ pt: 5 }} />
           </>

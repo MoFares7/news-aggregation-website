@@ -15,7 +15,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { Link, useLocation } from 'react-router-dom';
 import colors from '../../assets/theme/base/colors';
 import MDTypography from '../../items/MDTypography';
-import typography from './../../assets/theme/base/typography';
+import typography from '../../assets/theme/base/typography';
 
 const Navbar = () => {
         const [drawerOpen, setDrawerOpen] = React.useState(false);
@@ -45,7 +45,7 @@ const Navbar = () => {
                                                 </IconButton>
                                         ) : (
                                                 <>
-                                                        <Typography typography={typography.d5} sx={{ flexGrow: 1 }}>
+                                                        <Typography typography={typography.d6} sx={{ flexGrow: 1 }}>
                                                                 New Aggregation Website
                                                         </Typography>
                                                        
