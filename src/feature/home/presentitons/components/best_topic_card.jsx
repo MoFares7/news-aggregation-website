@@ -26,7 +26,7 @@ const BestTopicCard = ({ title, author, image, createAt }) => {
                                         <Typography sx={{ pl: '10px', color: colors.grey[400] }}>{author}</Typography>
                                 </Box>
 
-                                <Box sx={{ height: 100 }}>
+                                <Box sx={{ height: 100, maxHeight: '150px', overflowY: 'auto' }}>
                                         <Typography typography={typography.title} sx={{ pt: 1, pb: 1 }}>
                                                 {title}
                                         </Typography>
