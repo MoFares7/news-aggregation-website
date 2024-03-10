@@ -68,7 +68,7 @@ const Navbar = () => {
                                                                 }}
                                                         >
                                                                 <Link to="/elec-news" style={{ textDecoration: 'none', color: 'inherit' }}>
-                                                                        <MDTypography typography={typography.body2}>Technology</MDTypography>
+                                                                        <MDTypography typography={typography.body2}>Various</MDTypography>
                                                                 </Link>
                                                         </Box>
                                                         <Box
@@ -95,7 +95,7 @@ const Navbar = () => {
                                                         <ListItemText primary="Home" />
                                                 </ListItem>
                                                 <ListItem button component={Link} to="/elec-news" selected={location.pathname === '/elec-news'}>
-                                                        <ListItemText primary="Technology " />
+                                                        <ListItemText primary="Various " />
                                                 </ListItem>
                                                 <ListItem button component={Link} to='/edu-news' selected={location.pathname === '/edu-news'}>
                                                         <ListItemText primary="Education " />
